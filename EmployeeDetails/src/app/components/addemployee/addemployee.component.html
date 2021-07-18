@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="card text-center">
+              <h2 class="text-center">Add Employee Details</h2>
+         <form (ngSubmit)="addEmployeeDetailsForm()">     
+              <mat-form-field class="field" appearance="outline">
+                <mat-label>Enter First Name</mat-label>
+                    <input name="firstName" [(ngModel)]="data.firstName" matInput>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="outline">
+                <mat-label>Enter Last Name</mat-label>
+                    <input name="lastName" [(ngModel)]="data.lastName" matInput>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="outline">
+                <mat-label>Job Title</mat-label>
+                    <input name="jobTitle" [(ngModel)]="data.jobTitle" matInput>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="outline">
+                <mat-label>Enter Email ID</mat-label>
+                    <input name="emailId" [(ngModel)]="data.emailId" matInput>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="outline">
+                <mat-label>Enter Phone No</mat-label>
+                    <input name="phoneNumber" [(ngModel)]="data.phoneNumber" matInput>
+            </mat-form-field>
+
+            <mat-form-field class="field" appearance="outline">
+                <mat-label>Enter Age</mat-label>
+                    <input name="age" [(ngModel)]="data.age" matInput>
+            </mat-form-field>
+
+            <!--select box-->
+            <!-- <mat-form-field class="field"  appearance="outline">
+                <mat-label>Favorite food</mat-label>
+                <mat-select [(ngModel)]="selectedValue" name="food">
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> -->
+
+              <!--buttons-->
+            <div class="text-center">
+                <button type="submit" mat-raised-button color="primary">Submit</button>
+                <button type="reset" mat-raised-button color="accent">ReSet</button>
+            </div>
+        </form>
+        {{data|json}}   
+    </div>
+
+</div>
