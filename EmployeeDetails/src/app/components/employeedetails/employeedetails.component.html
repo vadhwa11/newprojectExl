@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="card">
+<form (ngSubmit)="doSubmitForm()">
+    
+        <!-- <h2>enter the employee name</h2> -->
+            <mat-form-field class="field" appearance="outline">
+                <mat-label>enter first name and last</mat-label>
+                    <input name="employeeName" [(ngModel)]="data.employeeName" matInput>
+            </mat-form-field>
+
+            <!-- <h3>start date</h3> -->
+            <mat-form-field class="field" appearance="outline">
+                <mat-label >start date</mat-label>
+                    <input matInput [matDatepicker]="myStartDatepicker" disabled name="startDate" [(ngModel)]="data.startDate" >
+            <mat-datepicker-toggle [for]="myStartDatepicker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #myStartDatepicker disabled="false"></mat-datepicker>
+                </mat-form-field>
+            
+
+            <!-- <h3>end date</h3> -->
+            <!-- <mat-form-field class="field" appearance="outline">
+                <mat-label >end date</mat-label>
+                    <input name="endDate" [(ngModel)]="data.endDate" matInput>
+            </mat-form-field> -->
+            
+            <mat-form-field class="field" appearance="outline">
+                <mat-label >end date</mat-label>
+                <input matInput [matDatepicker]="myDatepicker" disabled name="endDate" [(ngModel)]="data.endDate">
+                <mat-datepicker-toggle [for]="myDatepicker" matSuffix ></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <!-- <h3>end </h3> -->
+
+            <div class="text-center">
+                <button type="submit" mat-raised-button color="primary">Search Employee</button>
+                <button type="reset" mat-raised-button color="accent">ReSet</button>
+            </div>
+        </form>   
+       
+        <div class="mat-elevation-z8">
+        <mat-table [dataSource]="" >
+            <!-- Position Column -->
+            <ng-container matColumnDef="ID">
+              <mat-header-cell *matHeaderCellDef> employeeId </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.employeeId}} </mat-cell>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="Name">
+              <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="JobTitle">
+              <mat-header-cell *matHeaderCellDef> Job Title </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.JobTitle}} </mat-cell>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Age">
+              <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.Age}} </mat-cell>
+            </ng-container>
+
+             <!-- Start Date Column -->
+             <ng-container matColumnDef="startDate">
+                <mat-header-cell *matHeaderCellDef> Start Date </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.startDate}} </mat-cell>
+              </ng-container>
+
+               <!-- End Date Column -->
+            <ng-container matColumnDef="endDate">
+                <mat-header-cell *matHeaderCellDef> End Date </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.endDate}} </mat-cell>
+              </ng-container>
+          
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </div>
+          
+          
+
+          <table border="1" *ngIf="empdata">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Job Title</th>
+                <th>Age</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+              </tr>
+            </thead>
+            <tbody>  
+              <tr *ngFor="let emp of empdata.empList">
+              
+                <td>{{emp.employeeId}}</td>
+                <td>{{emp.firstName}} {{emp.lastName}}</td>
+                <td>{{emp.jobTitle}}</td>
+                <td>{{emp.age}}</td>
+                <td>{{emp.startDate}}</td>
+                <td>{{emp.endDate}}</td>
+              
+                  
+
+              </tr>
+            </tbody>
+          </table>
+
+    </div>
+
+</div>
